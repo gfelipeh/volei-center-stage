@@ -1,7 +1,7 @@
-import { useMemo,useState } from "react";
+import { useMemo,useState,type PointerEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { courts } from "../data/mockCourts";
-import type { Category,PayMethod,Reservation,Screen } from "../types/arena";
+import type { Category,PayMethod,Reservation } from "../types/arena";
 import { useArena } from "../components/shared/ArenaProvider";
 import { useScreenHistory } from "../hooks/useScreenHistory";
 import { Header } from "../components/shared/Header";
@@ -36,7 +36,7 @@ function ArenaVolei() {
 
   const openCourt=(id:number)=>{const next=courts.find((item)=>item.id===id)??courts[0]!;setCourt(next);setSlots(["18:00"]);setPlayers(10);navigate("detail");};
   const confirmBooking=(total:number)=>{const reservation=createReservation({court,day,slots,players,total});setLastReservation(reservation);navigate("success");};
-  const handlePointerDown=(event:React.PointerEvent<HTMLDivElement>)=>{const target=event.target as Element;if(target.closest("button")&&"vibrate" in navigator) navigator.vibrate?.(7);};
+  const handlePointerDown=(event:PointerEvent<HTMLDivElement>)=>{const target=event.target as Element;if(target.closest("button")&&"vibrate" in navigator) navigator.vibrate?.(7);};
 
   let content;
   switch(screen) {
