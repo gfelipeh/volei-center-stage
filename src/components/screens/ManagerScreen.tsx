@@ -10,9 +10,9 @@ const money=(v:number)=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL
 
 export function ManagerScreen({onBack,onClientView}:{onBack:()=>void;onClientView:(courtId:number)=>void}) {
   const {reservations,getSlotStatus,toggleBlockedSlot,showToast}=useArena();
-  const [managerCourtId,setManagerCourtId]=useState(courts[0].id);
+  const [managerCourtId,setManagerCourtId]=useState(courts[0]!.id);
   const [day,setDay]=useState("27");
-  const court=courts.find((item)=>item.id===managerCourtId)??courts[0];
+  const court=courts.find((item)=>item.id===managerCourtId)??courts[0]!;
   const reserved=reservations.filter((item)=>item.court.id===court.id);
   const dayReservations=reserved.filter((item)=>item.day===day);
   const revenue=reserved.reduce((sum,item)=>sum+item.total,0);
