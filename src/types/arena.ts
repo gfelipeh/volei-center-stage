@@ -1,0 +1,9 @@
+export type Screen = "home" | "search" | "reservations" | "profile" | "manager" | "detail" | "checkout" | "success";
+export type Category = "Todos" | "Areia" | "Indoor" | "Beach Tennis";
+export type SlotStatus = "open" | "prime" | "taken" | "blocked";
+export type PayMethod = "pix" | "card";
+export type Court = { id:number; name:string; area:Category; neighborhood:string; distance:string; rating:string; reviews:number; price:number; status:"available"|"limited"; tags:string[]; image:string; description:string; };
+export type Extra = { id:string; name:string; detail:string; price:number; };
+export type SlotGroup = { name:string; values:string[]; };
+export type ArenaDate = { label:string; day:string; month:string; };
+export type Reservation = { id:string; court:Court; day:string; slots:string[]; players:number; total:number; createdAt:string; };
