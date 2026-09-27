@@ -9,7 +9,7 @@ type ArenaContextValue = {
   toggleBlockedSlot:(courtId:number,day:string,slot:string)=>void; getSlotStatus:(courtId:number,day:string,slot:string)=>SlotStatus;
   createReservation:(reservation:Omit<Reservation,"id"|"createdAt">)=>Reservation; showToast:(message:string)=>void;
 };
-const demoReservations:Reservation[] = [{ id:"demo-1",court:courts[0],day:"27",slots:["20:00","21:00"],players:10,total:170,createdAt:"2026-09-27T12:00:00.000Z" }];
+const demoReservations:Reservation[] = [{ id:"demo-1",court:courts[0]!,day:"27",slots:["20:00","21:00"],players:10,total:170,createdAt:"2026-09-27T12:00:00.000Z" }];
 const ArenaContext = createContext<ArenaContextValue|null>(null);
 
 export function ArenaProvider({children}:{children:ReactNode}) {

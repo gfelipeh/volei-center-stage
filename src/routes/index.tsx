@@ -22,7 +22,7 @@ function ArenaVolei() {
   const {createReservation}=useArena();
   const [category,setCategory]=useState<Category>("Todos");
   const [query,setQuery]=useState("");
-  const [court,setCourt]=useState(courts[0]);
+  const [court,setCourt]=useState(courts[0]!);
   const [day,setDay]=useState("27");
   const [slots,setSlots]=useState<string[]>(["18:00"]);
   const [players,setPlayers]=useState(10);
@@ -34,7 +34,7 @@ function ArenaVolei() {
     return (category==="Todos"||item.area===category)&&(!q||(item.name+" "+item.neighborhood+" "+item.area).toLowerCase().includes(q));
   }),[category,query]);
 
-  const openCourt=(id:number)=>{const next=courts.find((item)=>item.id===id)??courts[0];setCourt(next);setSlots(["18:00"]);setPlayers(10);navigate("detail");};
+  const openCourt=(id:number)=>{const next=courts.find((item)=>item.id===id)??courts[0]!;setCourt(next);setSlots(["18:00"]);setPlayers(10);navigate("detail");};
   const confirmBooking=(total:number)=>{const reservation=createReservation({court,day,slots,players,total});setLastReservation(reservation);navigate("success");};
   const handlePointerDown=(event:React.PointerEvent<HTMLDivElement>)=>{const target=event.target as Element;if(target.closest("button")&&"vibrate" in navigator) navigator.vibrate?.(7);};
 
