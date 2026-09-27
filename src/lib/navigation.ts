@@ -9,3 +9,7 @@ export const openWaze = (court: Court) => {
 export const openMaps = (court: Court) => {
   window.open("https://www.google.com/maps/search/?api=1&query=" + query(court), "_blank", "noopener,noreferrer");
 };
+
+export const shareOnWhatsApp = (message: string) => {
+  window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
+};
