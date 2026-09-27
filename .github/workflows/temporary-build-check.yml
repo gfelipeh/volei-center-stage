@@ -1,0 +1,17 @@
+name: Temporary build check
+
+on:
+  push:
+    branches:
+      - codex-build-check-20260927
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
